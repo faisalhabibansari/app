@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://socket.io/get-started/chat/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Socket.IO  —  Chat</title>
+<link href="./Socket.IO — Chat_files/css" rel="stylesheet" type="text/css">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://socket.io/xmlrpc.php">
+
+
+<link rel="alternate" type="application/rss+xml" title=" » Feed" href="http://socket.io/feed/">
+<link rel="alternate" type="application/rss+xml" title=" » Comments Feed" href="http://socket.io/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title=" » Chat Comments Feed" href="http://socket.io/get-started/chat/feed/">
+		<script id="twitter-wjs" src="./Socket.IO — Chat_files/widgets.js"></script><script type="text/javascript" async="" src="./Socket.IO — Chat_files/ga.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/socket.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.1"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f;c.supports={simple:d("simple"),flag:d("flag")},c.supports.simple&&c.supports.flag||(f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Socket.IO — Chat_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="videojs-plugin-css" href="./Socket.IO — Chat_files/plugin-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="videojs-css" href="./Socket.IO — Chat_files/video-js.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpclef-main-css" href="./Socket.IO — Chat_files/main.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="mailchimp-for-wp-checkbox-css" href="./Socket.IO — Chat_files/checkbox.css" type="text/css" media="all">
+<link rel="stylesheet" id="socket-io-website-style-css" href="./Socket.IO — Chat_files/style.css" type="text/css" media="all">
+<script type="text/javascript" src="./Socket.IO — Chat_files/jquery.js"></script>
+<script type="text/javascript" src="./Socket.IO — Chat_files/jquery-migrate.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://socket.io/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://socket.io/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.2.1">
+<link rel="canonical" href="./Socket.IO — Chat_files/Socket.IO — Chat.html">
+<link rel="shortlink" href="http://socket.io/?p=272">
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-18488944-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+		<script type="text/javascript"> document.createElement("video");document.createElement("audio");document.createElement("track"); </script>
+					<!-- Easy Columns 2.1.1 by Pat Friedl http://www.patrickfriedl.com -->
+			<link rel="stylesheet" href="./Socket.IO — Chat_files/easy-columns.css" type="text/css" media="screen, projection">
+			</head>
+
+<body class="page page-id-272 page-child parent-pageid-24 page-template-default group-blog">
+<div id="bar" style="background-position: 0% 6.73582109659168%;"></div>
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://socket.io/" rel="home"></a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<div id="logo-container"><a href="http://socket.io/" id="logo">socket.io</a></div>
+			<div class="menu-menu-container"><ul id="menu-menu" class="menu"><li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-6"><a href="http://socket.io/">Home</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="http://socket.io/demos/chat/">Demos</a></li>
+<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-30"><a href="http://socket.io/get-started/">Get started</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="http://socket.io/docs/">Docs</a></li>
+<li id="menu-item-95" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-95"><a href="http://socket.io/blog/">Blog</a></li>
+<li class="menu-item"><a href="http://socket.io/slack" title="48 users of online of 3449">Slack<span id="slack-count">48</span></a></li><li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="http://socket.io/download/">Download v1.3.5</a></li>
+</ul></div>      <iframe src="./Socket.IO — Chat_files/github-btn.html" allowtransparency="true" frameborder="0" scrolling="0" width="120" id="gh-watchers" height="20"></iframe>
+		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			
+				
+<article id="post-272" class="post-272 page type-page status-publish hentry">
+	<div class="entry-content">
+		<h1>Get Started: Chat application</h1>
+<p>In this guide we’ll create a basic chat application. It requires almost no basic prior knowledge of Node.JS or Socket.IO, so it’s ideal for users of all knowledge levels.</p>
+<h2>Introduction</h2>
+<p>Writing a chat application with popular web applications stacks like LAMP (PHP) has traditionally been very hard. It involves polling the server for changes, keeping track of timestamps, and it’s a lot slower than it should be.</p>
+<p>Sockets have traditionally been the solution around which most realtime chat systems are architected, providing a bi-directional communication channel between a client and a server.</p>
+<p>This means that the server can <em>push</em> messages to clients. Whenever you write a chat message, the idea is that the server will get it and push it to all other connected clients.</p>
+<h2>The web framework</h2>
+<p>The first goal is to setup a simple HTML webpage that serves out a form and a list of messages. We’re going to use the Node.JS web framework <code>express</code> to this end. Make sure <a href="http://nodejs.org/">Node.JS is installed</a>.</p>
+<p>First let’s create a <code>package.json</code> manifest file that describes our project. I recommend you place it in a dedicated empty directory (I’ll call mine <code>chat-example</code>).</p>
+<pre><code>{
+  "name": "socket-chat-example",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {}
+}</code></pre>
+<p>Now, in order to easily populate the <code>dependencies</code> with the things we need, we’ll use <code>npm install --save</code>:</p>
+<pre><code>npm install --save express@4.10.2</code></pre>
+<p>Now that express is installed we can create an <code>index.js</code> file that will setup our application.</p>
+<pre><code>var app = require('express')();
+var http = require('http').Server(app);
+
+app.get('/', function(req, res){
+  res.send('&lt;h1&gt;Hello world&lt;/h1&gt;');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});</code></pre>
+<p>This translates into the following:</p>
+<ol>
+<li>Express initializes <code>app</code> to be a function handler that you can supply to an HTTP server (as seen in line 2). </li>
+<li>We define a route handler <code>/</code> that gets called when we hit our website home.</li>
+<li>We make the http server listen on port 3000.</li>
+</ol>
+<p>If you run <code>node index.js</code> you should see the following:</p>
+<p><img src="./Socket.IO — Chat_files/-LsMcTduUg.png" alt=""></p>
+<p>And if you point your browser to <code>http://localhost:3000</code>:</p>
+<p><img src="./Socket.IO — Chat_files/AOuGSHy7QM.png" alt=""></p>
+<h2>Serving HTML</h2>
+<p>So far in <code>index.js</code> we’re calling <code>res.send</code> and pass it a HTML string. Our code would look very confusing if we just placed our entire application’s HTML there. Instead, we’re going to create a <code>index.html</code> file and serve it.</p>
+<p>Let’s refactor our route handler to use <code>sendFile</code> instead:</p>
+<pre><code>app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});</code></pre>
+<p>And populate <code>index.html</code> with the following:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Socket.IO chat&lt;/title&gt;
+    &lt;style&gt;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ul id="messages"&gt;&lt;/ul&gt;
+    &lt;form action=""&gt;
+      &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>If you restart the process (by hitting Control+C and running <code>node index</code> again) and refresh the page it should look like this:</p>
+<p><img src="./Socket.IO — Chat_files/985FgSH2HQ.png" alt=""></p>
+<h2>Integrating Socket.IO</h2>
+<p>Socket.IO is composed of two parts:</p>
+<ul>
+<li>A server that integrates with (or mounts on) the Node.JS HTTP Server: <code>socket.io</code></li>
+<li>A client library that loads on the browser side: <code>socket.io-client</code></li>
+</ul>
+<p>During development, <code>socket.io</code> serves the client automatically for us, as we’ll see, so for now we only have to install one module:</p>
+<pre><code>npm install --save socket.io</code></pre>
+<p>That will install the module and add the dependency to <code>package.json</code>. Now let’s edit <code>index.js</code> to add it:</p>
+<pre><code>var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.sendfile('index.html');
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});</code></pre>
+<p>Notice that I initialize a new instance of <code>socket.io</code> by passing the <code>http</code> (the HTTP server) object. Then I listen on the <code>connection</code> event for incoming sockets, and I log it to the console.</p>
+<p>Now in index.html I add the following snippet before the <code>&lt;/body&gt;</code>:</p>
+<pre><code>&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  var socket = io();
+&lt;/script&gt;</code></pre>
+<p>That’s all it takes to load the <code>socket.io-client</code>, which exposes a <code>io</code> global, and then connect.</p>
+<p>Notice that I’m not specifying any URL when I call <code>io()</code>, since it defaults to trying to connect to the host that serves the page.</p>
+<p>If you now reload the server and the website you should see the console print “a user connected”.<br>
+Try opening several tabs, and you’ll see several messages:</p>
+<p><img src="./Socket.IO — Chat_files/F5EBcTVDcd.png" alt=""></p>
+<p>Each socket also fires a special <code>disconnect</code> event:</p>
+<pre><code>io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});</code></pre>
+<p>Then if you refresh a tab several times you can see it in action:</p>
+<p><img src="./Socket.IO — Chat_files/bOmy6xrJmi.png" alt=""></p>
+<h2>Emitting events</h2>
+<p>The main idea behind Socket.IO is that you can send and receive any events you want, with any data you want. Any objects that can be encoded as JSON will do, and <a href="http://socket.io/blog/introducing-socket-io-1-0/#binary">binary data</a> is supported too.</p>
+<p>Let’s make it so that when the user types in a message, the server gets it as a <code>chat message</code> event. The <code>script</code>s section in <code>index.html</code> should now look as follows:</p>
+<pre><code>&lt;script src="https://cdn.socket.io/socket.io-1.2.0.js"&gt;&lt;/script&gt;
+&lt;script src="http://code.jquery.com/jquery-1.11.1.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+&lt;/script&gt;</code></pre>
+<p>And in <code>index.js</code> we print out the <code>chat message</code> event:</p>
+<pre><code>io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});</code></pre>
+<p>The result should be like the following video:</p>
+<p><video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/zboNrGSsai.mp4"></video></p>
+<h2>Broadcasting</h2>
+<p>The next goal is for us to emit the event from the server to the rest of the users.</p>
+<p>In order to send an event to everyone, Socket.IO gives us the <code>io.emit</code>:</p>
+<pre><code>io.emit('some event', { for: 'everyone' });</code></pre>
+<p>If you want to send a message to everyone except for a certain socket, we have the <code>broadcast</code> flag:</p>
+<pre><code>io.on('connection', function(socket){
+  socket.broadcast.emit('hi');
+});</code></pre>
+<p>In this case, for the sake of simplicity we’ll send the message to everyone, including the sender.</p>
+<pre><code>io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});</code></pre>
+<p>And on the client side when we capture a <code>chat message</code> event we’ll include it in the page. The total client-side JavaScript code now amounts to:</p>
+<pre><code>&lt;script&gt;
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  socket.on('chat message', function(msg){
+    $('#messages').append($('&lt;li&gt;').text(msg));
+  });
+&lt;/script&gt;</code></pre>
+<p>And that completes our chat application, in about 20 lines of code! This is what it looks like:</p>
+<p><video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/J4xwRU9DRn.mp4"></video></p>
+<h2>Homework</h2>
+<p>Here are some ideas to improve the application:</p>
+<ul>
+<li>Broadcast a message to connected users when someone connects or disconnects</li>
+<li>Add support for nicknames</li>
+<li>Don’t send the same message to the user that sent it himself. Instead, append the message directly as soon as he presses enter.</li>
+<li>Add “{user} is typing” functionality</li>
+<li>Show who’s online</li>
+<li>Add private messaging</li>
+<li>Share your improvements!</li>
+</ul>
+<h2>Getting this example</h2>
+<p>You can find it on GitHub <a href="https://github.com/guille/chat-example">here</a>.</p>
+<pre><code>$ git clone https://github.com/guille/chat-example.git</code></pre>
+			</div><!-- .entry-content -->
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<span class="footer-left">SOCKET.IO IS OPEN-SOURCE (MIT). RUN BY <a href="https://github.com/Automattic/socket.io/graphs/contributors">CONTRIBUTORS</a>. <a href="https://twitter.com/socketio" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @socketio</a></span>
+			<span class="footer-right"><a href="http://automattic.com/">SUPPORTED BY<div id="a8c-image"></div></a></span>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type="text/javascript" src="./Socket.IO — Chat_files/javascripts.js"></script>
+
+
+<script src="./Socket.IO — Chat_files/jquery-1.9.1.min.js"></script>
+<script src="./Socket.IO — Chat_files/socket.io-1.3.0.js"></script>
+<!-- Twitter script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script>
+(function() {
+  var slack_users_count = 49;
+  var li = $('<li class="menu-item"><a href="/slack">Slack</a></li>')
+  var count = $('<span id="slack-count">').text(slack_users_count);
+  var socket = io('http://slack-io.socket.io');
+
+  li.find('a').append(count);
+  $('#menu-item-43').before(li);
+
+  socket.on('slack users count', function(val, total){
+    var old = Number(count.text());
+    count.text(val);
+    li.find('a').attr('title', val + ' users of online of ' + total);
+
+    if (val > old) {
+      count.removeClass().addClass('animated bounce').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $(this).removeClass();
+      });
+    }
+
+    $('.slack-users-count').text(val);
+    $('.slack-users-count-total').text(total);
+  });
+})();
+</script>
+
+
+
+
+</body></html>

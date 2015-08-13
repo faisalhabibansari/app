@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Chat - Phonegap</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/phonegap.0.9.5.1.js"></script>
+    <script type="text/javascript" src="js/socket.io-1.3.5.js"></script>
+    <script type="text/javascript" src="js/exceptions.js"></script>
+    <script type="text/javascript" src="js/websocket.js"></script>
+<script>
+$(document).ready(function(){
+
+       var socket = null;
+    
+    function message(obj){
+        var el = document.createElement('p');
+        if ('announcement' in obj)
+        {
+         el.innerHTML = '<em>' + esc(obj.announcement) + '</em>';	
+        } 
+        else if ('message' in obj)
+        {
+          el.innerHTML = '<b>' + esc(obj.message[0]) + ':</b> ' + esc(obj.message[1]);
+        } 
+        if( obj.message && window.console && console.log )
+        {
+         console.log(obj.message[0], obj.message[1]);
+        } 
+        $("#chat").append(el);
+        $("#chat").scrollTop(1000000);
+      }
+
+      socket = new io.Socket("http://faisalhabibansari-test.apigee.net", { port: 8080 , rememberTransport: false });
+/*
+      socket.connect();
+
+      socket.on('message', function(obj){
+        if ('buffer' in obj){
+          //document.getElementById('form').style.display='block';
+          document.getElementById('chat').innerHTML = '';
+      
+          for (var i in obj.buffer) message(obj.buffer[i]);
+        } else message(obj);
+      });
+      
+      socket.on('connect', function(){ message({ message: ['System', 'Connected']}); });
+      socket.on('disconnect', function(){ message({ message: ['System', 'Disconnected']})});
+      socket.on('reconnect', function(){ message({ message: ['System', 'Reconnected to server']})});
+      socket.on('reconnecting', function( nextRetry ){ message({ message: ['System', 'Attempting to re-connect to the server, next attempt in ' + nextRetry + 'ms']})});
+      socket.on('reconnect_failed', function(){ message({ message: ['System', 'Reconnected to server FAILED.']})});
+*/
+
+       $("#btnSubmit").click(function(){
+        	var val = document.getElementById('campo').value;
+            socket.send(val);
+            message({ message: ['you', val] });
+            $("#campo").val('');
+            return false;
+    });
+
+function esc(msg){
+      return msg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+});
+
+</script>
+</head>
+<body>
+
+
+    <div id="chat"><p>Connecting...</p></div>
+    <form id="form">
+      <input id="campo" type="text" autocomplete="off" id="text">
+      <input id="btnSubmit" type="button" value="Send">
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+<script src="js//jquery-1.11.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/app.js"></script>
+</head>
+
+<body>
+	<div data-role="page">
+
+	<div data-role="header">
+		<h1>FasTip</h1>
+		<a href="#settingsPage" id='settingsButton' class="ui-btn-right" data-role="button" data-icon="gear">Settings</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+<form>
+  <div data-role="fieldcontain">
+  <fieldset data-role="controlgroup">
+  <label for="billAmount">Bill Amount:</label>
+   <input type="text" id="billAmount"/> 
+   <a id='calcTip' data-role="button" > Calculate Tip</a>
+</fieldset>
+  </div>
+  </form>
+
+<label for="tipAmount">Tip Amount:</label>
+<p id="tipAmount"> </p>
+
+<label for="totalAmount">Total Amount:</label>
+<p id="totalAmount"> </p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>
+	<div data-role="page" id="settingsPage" data-add-back-btn="true" >
+  <div data-role="header">
+   <a href="#mainPage" class="ui-btn ui-icon-delete ui-btn-icon-left"
+    data-rel="back">Cancel</a>
+   <h1>FasTip - Settings</h1>
+  </div>
+  <div data-role="content">
+    <fieldset data-role="controlgroup">
+     <label for="tipPercentage">Tool Tip Percent:</label>
+     <input type="text" id="tipPercentage"/> 
+     <a id='saveSettings' data-role="button" > Save Setting</a>
+    </fieldset>
+
+  </div>
+  </div>
